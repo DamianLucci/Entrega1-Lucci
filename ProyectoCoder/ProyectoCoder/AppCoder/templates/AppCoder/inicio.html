@@ -1,0 +1,129 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Buscadores</h1>
+  
+
+    <h3>Para buscar una camada:</h3>
+
+    <form action="/AppCoder/buscar/" method="GET">
+
+        <input type="number" name="camada" id="camada">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if cursos %}
+
+    <p>Estamos buscando el: {{camada}}</p>
+
+    <ul>
+	{% for curso in cursos %}
+		<li> {{curso.nombre}} </li>
+		<li> {{curso.camada}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+    
+    <h3>Para buscar una materia:</h3>
+
+    <form action="/AppCoder/buscarmateria/" method="GET">
+
+        <input type="text" name="materia" id="materia">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if materias %}
+
+    <p>El profesor asignado a {{materia}} es:</p>
+
+    <ul>
+    {% for materia in materias %}
+		<li> {{materia.nombre_profesor_a_cargo}}, {{materia.apellido_profesor_a_cargo}} </li>
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+
+    <h3>Para buscar un grado:</h3>
+
+    <form action="/AppCoder/buscarpost_grados/" method="GET">
+
+        <input type="text" name="grado" id="grado">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if grados %}
+
+    <p>El profesor asignado a {{grado}} es:</p>
+
+    <ul>
+    {% for grado in grados %}
+		<li> {{grado.nombre_profesor_a_cargo}}, {{grado.apellido_profesor_a_cargo}} </li>
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+
+    <h3>Para buscar un estudiante:</h3>
+
+    <form action="/AppCoder/buscar_estudiantes/" method="GET">
+
+        <input type="text" name="estudiante" id="estudiante">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if estudiantes %}
+
+    <p>El estudiante buscado es:</p>
+
+    <ul>
+    {% for estudiante in estudiantes %}
+		<li> {{estudiante.nombre}}, {{estudiante.apellido}} </li>
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+
+{% endblock %}
